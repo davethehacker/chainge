@@ -43,12 +43,17 @@ contract Campaign {
         owner = msg.sender;
         ratioProject = 70;
 
+        runTimeDonations = 30 seconds;
+        runTimeCampaign = 30 seconds;
+        runTimeVoting = 30 seconds;
+
         addCommunityProject("CommunityProject 1");
         addCommunityProject("CommunityProject 2");
 
         donationInProgress = true;
         startTimeDonations = now;
     }
+
     function() external payable {
         require(donationInProgress);
         if(donorsAmount[msg.sender] == 0) {
@@ -59,15 +64,13 @@ contract Campaign {
 
     function startCampaign() external {
         require(donationInProgress);
+        require(now >= startTimeDonations + runTimeDonations);
         startTimeCampaign = now;
-
-        //owner.transfer(address(this).balance * ratioProject);
-
-        uint forOwner = (address(this).balance / 100) * ratioProject;
-        owner.transfer(forOwner);
-
         donationInProgress = false;
         campaignInProgress = true;
+
+        uint forOwner = (address(this).balance / 100) * ratioProject;
+        owner.transfer(forOwner);        
     }
 
     function endCampaign() external {
@@ -85,10 +88,12 @@ contract Campaign {
 
     } 
 
-    function _startVoting() internal {
-        //set startTimeVoting;
-        votingInProgress = true;
+    function startVoting() external {
+        require(campaignInProgress);
+        require(now >= startTimeCampaign + runTimeCampaign);
         startTimeVoting = now;
+        campaignInProgress = false;
+        votingInProgress = true;
     }
 
     function endVoting() external {
@@ -99,7 +104,7 @@ contract Campaign {
 
 
 
-    /// ***** VOTING *****
+    /// * VOTING *
 
     uint totalBalance;
     uint voteCountTotal;
@@ -132,7 +137,6 @@ contract Campaign {
     }
 
     function payout() public{
-        
         for(uint i = 0; i < communityProjects.length; i++ ){
             communityProjects[i].account.transfer(1);
         }
