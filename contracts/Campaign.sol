@@ -52,7 +52,6 @@ contract Campaign {
 
         donationInProgress = true;
         startTimeDonations = now;
-        uint test;
     }
 
     function() external payable {
