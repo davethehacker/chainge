@@ -56,7 +56,7 @@ contract Campaign {
     }
 
     function() external payable {
-        require(donationInProgress);
+        require(donationInProgress, "donation not in progress");
         if(donorsAmount[msg.sender] == 0) {
             donors.push(msg.sender);
         }
@@ -64,8 +64,8 @@ contract Campaign {
     }
 
     function startCampaign() external {
-        require(donationInProgress);
-        require(now >= startTimeDonations + runTimeDonations);
+        require(donationInProgress, "donation not in progress");
+        require(now >= startTimeDonations + runTimeDonations, "too soon, donations time not yet up.");
         startTimeCampaign = now;
         donationInProgress = false;
         campaignInProgress = true;
@@ -74,24 +74,13 @@ contract Campaign {
         owner.transfer(forOwner);        
     }
 
-    function endCampaign() external {
-        require(campaignInProgress);
-        //check, if runtime is over
-        //check, if votingInProgress
-        //check, if impactGoals were reached
-        //if yes -> _startVoting();
-        //else -> refund();
-
-        campaignInProgress = false;
-    } 
-
     function _refund() internal {
 
     } 
 
     function startVoting() external {
-        require(campaignInProgress);
-        require(now >= startTimeCampaign + runTimeCampaign);
+        require(campaignInProgress, "campaign not in progress");
+        require(now >= startTimeCampaign + runTimeCampaign, "too soon, campaign time not yet up");
         startTimeVoting = now;
         campaignInProgress = false;
         votingInProgress = true;
