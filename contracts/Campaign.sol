@@ -95,6 +95,8 @@ contract Campaign {
             address payable donorAddress = address(uint160(donors[i]));
             donorAddress.transfer(refundAmount);
         }
+        //in case there are some (very small funds) remaining, send it to the owner
+        owner.transfer(address(this).balance);
     } 
 
     function startVoting() external {
