@@ -110,8 +110,8 @@ contract Campaign {
     }
 
     function endVoting() external {
-        //check, if runtime is over
-        //check, if votingInProgress
+        require(votingInProgress, "voting not in progress");
+        require(now >= startTimeVoting + runTimeVoting, "too soon, voting time not yet up");
         //pay out according to tokens invested
     }
 
