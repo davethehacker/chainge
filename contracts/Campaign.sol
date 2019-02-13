@@ -9,6 +9,9 @@ contract Campaign {
     uint ratioProject;
     address payable owner;
 
+    uint totalBalance;
+    uint precision = 10000;
+
     uint startTimeDonations;
     uint runTimeDonations;
 
@@ -28,9 +31,9 @@ contract Campaign {
     CommunityProject[] public communityProjects;
 
     mapping (address => uint) donorsAmount;
-    mapping (address => uint) donorsPercentage;
     mapping (uint => address) idDonor;
     address[] donors;
+    uint[] donorsShare;
 
     mapping (address => uint) gatherersToken;
     address[] gatherers;
@@ -65,6 +68,8 @@ contract Campaign {
     function startCampaign() external {
         require(donationInProgress, "donation not in progress");
         require(now >= startTimeDonations + runTimeDonations, "too soon, donations time not yet up.");
+
+        _calculateDonorsShare();
         startTimeCampaign = now;
         donationInProgress = false;
         campaignInProgress = true;
@@ -73,16 +78,35 @@ contract Campaign {
         owner.transfer(forOwner);        
     }
 
-    function _refund() internal {
+    function _calculateDonorsShare() internal {
+        totalBalance = address(this).balance;
+        for(uint i = 0; i < donors.length; i++) {
+            address donorAddress = donors[i];
+            uint donation = donorsAmount[donorAddress];
+            uint share = (donation * precision) / totalBalance;
+            donorsShare.push(share);
+        }
+    }
 
+    function _refund() internal {
+        uint totalRefund = address(this).balance;
+        for(uint i = 0; i < donors.length; i++) {
+            uint refundAmount = (totalRefund / precision) * donorsShare[i];
+            address payable donorAddress = address(uint160(donors[i]));
+            donorAddress.transfer(refundAmount);
+        }
     } 
 
     function startVoting() external {
         require(campaignInProgress, "campaign not in progress");
         require(now >= startTimeCampaign + runTimeCampaign, "too soon, campaign time not yet up");
-        startTimeVoting = now;
-        campaignInProgress = false;
-        votingInProgress = true;
+        if(_impactGoalsAchieved() == false) {
+            _refund();
+        } else {
+            startTimeVoting = now;
+            campaignInProgress = false;
+            votingInProgress = true;
+        }
     }
 
     function endVoting() external {
@@ -95,7 +119,6 @@ contract Campaign {
 
     /// * VOTING *
 
-    uint totalBalance;
     uint voteCountTotal;
 
     event votedEvent (
@@ -142,6 +165,11 @@ contract Campaign {
 
     function getTokens(address addr, uint num) public{
         gatherersToken[addr] += num;
+    }
+
+    function _impactGoalsAchieved() internal returns (bool) {
+        //check, whether impactGoals were achieved
+        return false;
     }
 
 } 
