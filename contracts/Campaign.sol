@@ -49,8 +49,7 @@ contract Campaign {
         donationInProgress = true;
         startTimeDonations = now;
     }
-
-    function makeDonation() external payable {
+    function() external payable {
         require(donationInProgress);
         if(donorsAmount[msg.sender] == 0) {
             donors.push(msg.sender);
@@ -133,6 +132,7 @@ contract Campaign {
     }
 
     function payout() public{
+        
         for(uint i = 0; i < communityProjects.length; i++ ){
             communityProjects[i].account.transfer(1);
         }
