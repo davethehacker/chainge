@@ -1,0 +1,247 @@
+{
+  "contractName": "subCampaign",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "makeDonation",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function",
+      "signature": "0x40ea0a94"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "donationInProgress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x47995180"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "endCampaign",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x71aac7f9"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "campaignInProgress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x991421df"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "startCampaign",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xa8b78ed0"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "endVoting",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xc3403ddf"
+    }
+  ],
+  "bytecode": "0x608060405233600560006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060646004819055506001601260006101000a81548160ff021916908315150217905550426006819055506103928061007e6000396000f3fe608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806340ea0a941461007d578063479951801461008757806371aac7f9146100b6578063991421df146100cd578063a8b78ed0146100fc578063c3403ddf14610113575b600080fd5b61008561012a565b005b34801561009357600080fd5b5061009c610243565b604051808215151515815260200191505060405180910390f35b3480156100c257600080fd5b506100cb610256565b005b3480156100d957600080fd5b506100e261028e565b604051808215151515815260200191505060405180910390f35b34801561010857600080fd5b506101116102a1565b005b34801561011f57600080fd5b50610128610364565b005b601260009054906101000a900460ff16151561014557600080fd5b6000600c60003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205414156101f457600f3390806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505b34600c60003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540192505081905550565b601260009054906101000a900460ff1681565b601260019054906101000a900460ff16151561027157600080fd5b6000601260016101000a81548160ff021916908315150217905550565b601260019054906101000a900460ff1681565b42600881905550600560009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc6004543073ffffffffffffffffffffffffffffffffffffffff1631029081150290604051600060405180830381858888f1935050505015801561032b573d6000803e3d6000fd5b506000601260006101000a81548160ff0219169083151502179055506001601260016101000a81548160ff021916908315150217905550565b56fea165627a7a7230582050da13ba2f5d48f1edd47aa70f3b9c6a6f7250f3935fe019e675420d55c8a2780029",
+  "deployedBytecode": "0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806340ea0a941461007d578063479951801461008757806371aac7f9146100b6578063991421df146100cd578063a8b78ed0146100fc578063c3403ddf14610113575b600080fd5b61008561012a565b005b34801561009357600080fd5b5061009c610243565b604051808215151515815260200191505060405180910390f35b3480156100c257600080fd5b506100cb610256565b005b3480156100d957600080fd5b506100e261028e565b604051808215151515815260200191505060405180910390f35b34801561010857600080fd5b506101116102a1565b005b34801561011f57600080fd5b50610128610364565b005b601260009054906101000a900460ff16151561014557600080fd5b6000600c60003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205414156101f457600f3390806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505b34600c60003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540192505081905550565b601260009054906101000a900460ff1681565b601260019054906101000a900460ff16151561027157600080fd5b6000601260016101000a81548160ff021916908315150217905550565b601260019054906101000a900460ff1681565b42600881905550600560009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc6004543073ffffffffffffffffffffffffffffffffffffffff1631029081150290604051600060405180830381858888f1935050505015801561032b573d6000803e3d6000fd5b506000601260006101000a81548160ff0219169083151502179055506001601260016101000a81548160ff021916908315150217905550565b56fea165627a7a7230582050da13ba2f5d48f1edd47aa70f3b9c6a6f7250f3935fe019e675420d55c8a2780029",
+  "sourceMap": "51:41:2:-;;;861:10:0;853:5;;:18;;;;;;;;;;;;;;;;;;896:3;881:12;:18;;;;931:4;910:18;;:25;;;;;;;;;;;;;;;;;;966:3;945:18;:24;;;;51:41:2;;;;;;",
+  "deployedSourceMap": "51:41:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;982:223:0;;;;;;714:30;;8:9:-1;5:2;;;30:1;27;20:12;5:2;714:30:0;;;;;;;;;;;;;;;;;;;;;;;;;;;1465:295;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1465:295:0;;;;;;750:30;;8:9:-1;5:2;;;30:1;27;20:12;5:2;750:30:0;;;;;;;;;;;;;;;;;;;;;;;;;;;1211:248;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1211:248:0;;;;;;1951:157;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1951:157:0;;;;;;982:223;1041:18;;;;;;;;;;;1033:27;;;;;;;;1101:1;1073:12;:24;1086:10;1073:24;;;;;;;;;;;;;;;;:29;1070:82;;;1118:6;1130:10;1118:23;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1118:23:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1070:82;1189:9;1161:12;:24;1174:10;1161:24;;;;;;;;;;;;;;;;:37;;;;;;;;;;;982:223::o;714:30::-;;;;;;;;;;;;;:::o;1465:295::-;1515:18;;;;;;;;;;;1507:27;;;;;;;;1748:5;1727:18;;:26;;;;;;;;;;;;;;;;;;1465:295::o;750:30::-;;;;;;;;;;;;;:::o;1211:248::-;1314:3;1294:17;:23;;;;1328:5;;;;;;;;;;;:14;;:52;1367:12;;1351:4;1343:21;;;:36;1328:52;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1328:52:0;1412:5;1391:18;;:26;;;;;;;;;;;;;;;;;;1448:4;1427:18;;:25;;;;;;;;;;;;;;;;;;1211:248::o;1951:157::-;:::o",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"./Campaign.sol\";\n\ncontract subCampaign is Campaign {\n    \n}",
+  "sourcePath": "/home/patrick/Documents/Ethereum/Chainge/contracts/secondContract.sol",
+  "ast": {
+    "absolutePath": "/home/patrick/Documents/Ethereum/Chainge/contracts/secondContract.sol",
+    "exportedSymbols": {
+      "subCampaign": [
+        237
+      ]
+    },
+    "id": 238,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 233,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "absolutePath": "/home/patrick/Documents/Ethereum/Chainge/contracts/Campaign.sol",
+        "file": "./Campaign.sol",
+        "id": 234,
+        "nodeType": "ImportDirective",
+        "scope": 238,
+        "sourceUnit": 175,
+        "src": "25:24:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 235,
+              "name": "Campaign",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 174,
+              "src": "75:8:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Campaign_$174",
+                "typeString": "contract Campaign"
+              }
+            },
+            "id": 236,
+            "nodeType": "InheritanceSpecifier",
+            "src": "75:8:2"
+          }
+        ],
+        "contractDependencies": [
+          174
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 237,
+        "linearizedBaseContracts": [
+          237,
+          174
+        ],
+        "name": "subCampaign",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 238,
+        "src": "51:41:2"
+      }
+    ],
+    "src": "0:92:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/patrick/Documents/Ethereum/Chainge/contracts/secondContract.sol",
+    "exportedSymbols": {
+      "subCampaign": [
+        237
+      ]
+    },
+    "id": 238,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 233,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "absolutePath": "/home/patrick/Documents/Ethereum/Chainge/contracts/Campaign.sol",
+        "file": "./Campaign.sol",
+        "id": 234,
+        "nodeType": "ImportDirective",
+        "scope": 238,
+        "sourceUnit": 175,
+        "src": "25:24:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 235,
+              "name": "Campaign",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 174,
+              "src": "75:8:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Campaign_$174",
+                "typeString": "contract Campaign"
+              }
+            },
+            "id": 236,
+            "nodeType": "InheritanceSpecifier",
+            "src": "75:8:2"
+          }
+        ],
+        "contractDependencies": [
+          174
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 237,
+        "linearizedBaseContracts": [
+          237,
+          174
+        ],
+        "name": "subCampaign",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 238,
+        "src": "51:41:2"
+      }
+    ],
+    "src": "0:92:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xC32ae3B5E53B442660A49C85BeC5e6BCe264765d",
+      "transactionHash": "0x59d53dde89e322192e1e8fd9739f34c1d900650bf6baf5bc31b67ccbc3dfa06b"
+    }
+  },
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-02-13T15:51:02.509Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
