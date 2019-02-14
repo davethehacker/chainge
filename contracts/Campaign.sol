@@ -8,6 +8,7 @@ contract Campaign {
     uint goalScore;
     uint ratioProject;
     address payable owner;
+    uint paymentBaseUnit;
 
     uint totalBalance;
     uint precision = 10000;
@@ -58,6 +59,7 @@ contract Campaign {
         country = "Romania";
         goalScore = 100;
         ratioProject = 60;
+        paymentBaseUnit = 10 finney;
 
         runTimeDonations = 30 seconds;
         runTimeCampaign = 30 seconds;
@@ -248,6 +250,8 @@ contract Campaign {
     }
 
     function _getReward(uint _actionId) internal {
-        
+        Action memory action = actions[_actionId];
+        gatherersToken[action.user] += action.reward;
+        action.user.transfer(action.reward * paymentBaseUnit);
     }
 } 
