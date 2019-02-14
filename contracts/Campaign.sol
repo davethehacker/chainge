@@ -44,17 +44,38 @@ contract Campaign {
         
     constructor() public {
         owner = msg.sender;
-        ratioProject = 70;
+
+        _createCampaign();
+        _createAllCommunityProjects();
+
+        donationInProgress = true;
+        startTimeDonations = now;
+    }
+
+    function _createCampaign() internal {
+        title = "Save the Bisons!";
+        description = "This is a sample Campaign to demonstrate the power of blockchain technology.";
+        country = "Romania";
+        goalScore = 100;
+        ratioProject = 60;
 
         runTimeDonations = 30 seconds;
         runTimeCampaign = 30 seconds;
         runTimeVoting = 30 seconds;
+    }
 
-        addCommunityProject("CommunityProject 1");
-        addCommunityProject("CommunityProject 2");
-
-        donationInProgress = true;
-        startTimeDonations = now;
+    function _createAllCommunityProjects() internal {
+        addCommunityProject(
+            "Schools 4 Everybody", 
+            "Eductation is extremely important. We want to make it available to all the children in our village.",
+            0x0fb4256f2dF60eab5788a0e413C7C30b3AfB5333
+        );
+        
+        addCommunityProject(
+            "Build a Wall", 
+            "I want a big, beautiful wall. It will be the best wall. And the Bulgarians will pay for it.",
+            0x0fb4256f2dF60eab5788a0e413C7C30b3AfB5333
+        );
     }
 
     function() external payable {
@@ -156,8 +177,8 @@ contract Campaign {
         }
     }
 
-    function addCommunityProject(string memory name) private {
-        communityProjects.push(CommunityProject(name, "desc", 2, 0x0fb4256f2dF60eab5788a0e413C7C30b3AfB5333));
+    function addCommunityProject(string memory name, string memory description, address payable account) private {
+        communityProjects.push(CommunityProject(name, description, 0, account));
     }
 
 
