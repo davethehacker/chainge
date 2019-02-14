@@ -221,14 +221,33 @@ contract Campaign {
         actions[_actionId].user = msg.sender;
         actions[_actionId].submissionData = _actionSubmissionData;
     }
+
     function _checkSubmissionType0(uint _actionId) internal returns (bool){
-        
         return true;
     }
+
     function verifySubmission(uint _actionId) external{
-        // check proofing type and process accordingly
-        // mark action as verified
-        // call getReward()
+        require(_actionId < actions.length, "there is no action with this id");
+        Action memory action = actions[_actionId];
+        require(action.done == true, "action is not done yet");
+        require(action.verified == false, "action is already verified");
+        uint actionType = action.proofingType;
+        bool verificationSuccessful;
+
+        if(actionType == 0) {
+            verificationSuccessful = _checkSubmissionType0(_actionId);
+        }
+        //Additional actionTypes
+
+        if(verificationSuccessful) {
+            action.verified = true;
+            _getReward(_actionId);
+        } else {
+            action.done = false;
+        }
     }
 
+    function _getReward(uint _actionId) internal {
+        
+    }
 } 
