@@ -204,11 +204,30 @@ contract Campaign {
         uint reward;
         bool done;
         uint proofingType;
+        bool verified;
+        string submissionData;
+        address payable user;
     }
     Action[] actions;
 
     function createAction(string memory _actionTitle, string memory _actionDescription, uint _actionReward, uint _actionProovingType) public{
+        require(msg.sender == owner, "only campaign owner is allowed to create actions");
+        require(address(this).balance > 0, "no balance");
         actions.push(Action(_actionTitle, _actionDescription, _actionReward, false, _actionProovingType));
     }
-    
+
+    function submitAction(uint _actionId) public {
+        // user submits data
+        // save submission, wait for verification
+    }
+    function _checkSubmissionType0(uint _actionId) internal returns (bool){
+        
+        return true;
+    }
+    function verifySubmission(uint _actionId) external{
+        // check proofing type and process accordingly
+        // mark action as verified
+        // call getReward()
+    }
+
 } 
