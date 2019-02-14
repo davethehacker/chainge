@@ -213,12 +213,13 @@ contract Campaign {
     function createAction(string memory _actionTitle, string memory _actionDescription, uint _actionReward, uint _actionProovingType) public{
         require(msg.sender == owner, "only campaign owner is allowed to create actions");
         require(address(this).balance > 0, "no balance");
-        actions.push(Action(_actionTitle, _actionDescription, _actionReward, false, _actionProovingType));
+        actions.push(Action(_actionTitle, _actionDescription, _actionReward, false, _actionProovingType, false, "", address(0)));
     }
 
-    function submitAction(uint _actionId) public {
-        // user submits data
-        // save submission, wait for verification
+    function submitAction(uint _actionId, string memory _actionSubmissionData) public {
+        require(actions[_actionId].done == false, "action is already done by other user");
+        actions[_actionId].user = msg.sender;
+        actions[_actionId].submissionData = _actionSubmissionData;
     }
     function _checkSubmissionType0(uint _actionId) internal returns (bool){
         
