@@ -196,4 +196,19 @@ contract Campaign {
         return true;
     }
 
+    // ***** actions *****
+
+    struct Action{
+        string title;
+        string description;
+        uint reward;
+        bool done;
+        uint proofingType;
+    }
+    Action[] actions;
+
+    function createAction(string memory _actionTitle, string memory _actionDescription, uint _actionReward, uint _actionProovingType) public{
+        actions.push(Action(_actionTitle, _actionDescription, _actionReward, false, _actionProovingType));
+    }
+    
 } 
