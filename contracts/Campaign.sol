@@ -135,9 +135,10 @@ contract Campaign {
     function endVoting() external {
         require(votingInProgress, "voting not in progress");
         require(now >= startTimeVoting + runTimeVoting, "too soon, voting time not yet up");
+        votingInProgress = false;
         //pay out according to tokens invested
+        payout();
     }
-
 
 
     /// * VOTING *
@@ -171,7 +172,7 @@ contract Campaign {
         emit votedEvent(_communityProjectId);
     }
 
-    function payout() public{
+    function payout() private{
         for(uint i = 0; i < communityProjects.length; i++ ){
             communityProjects[i].account.transfer(1);
         }
@@ -192,7 +193,7 @@ contract Campaign {
 
     function _impactGoalsAchieved() internal returns (bool) {
         //check, whether impactGoals were achieved
-        return false;
+        return true;
     }
 
 } 
